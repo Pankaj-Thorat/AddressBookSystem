@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBookSystem
 {
-    internal class AddressBookMain
+    class AddressBookMain
     {
         static void Main(string[] args)
         {
@@ -17,52 +17,31 @@ namespace AddressBookSystem
             {
                 //user menu for adding new contact
                 Console.WriteLine("1. Add a new contact");
-                Console.WriteLine("2. Exit");
+                Console.WriteLine("2. Update a contact");
+                Console.WriteLine("3. Display contacts");
+                Console.WriteLine("4. Exit");
 
                 Console.Write("Enter your choice: ");
                 int choice = int.Parse(Console.ReadLine());
 
                 //contact details Input 
-                if (choice == 1)
-                {   
-                    //creating new instance of class
-                    Contact newContact = new Contact();
-                    Console.Write("Enter First Name: ");
-                    newContact.FirstName = Console.ReadLine();
-
-                    Console.Write("Enter Last Name: ");
-                    newContact.LastName = Console.ReadLine();
-
-                    Console.Write("Enter Address: ");
-                    newContact.Address = Console.ReadLine();
-
-                    Console.Write("Enter City: ");
-                    newContact.City = Console.ReadLine();
-
-                    Console.Write("Enter State: ");
-                    newContact.State = Console.ReadLine();
-
-                    Console.Write("Enter Zip: ");
-                    newContact.Zip = Console.ReadLine();
-
-                    Console.Write("Enter Phone Number: ");
-                    newContact.PhoneNumber = Console.ReadLine();
-
-                    Console.Write("Enter Email: ");
-                    newContact.Email = Console.ReadLine();
-
-                    //adding new contact to the collection
-                    contacts.Add(newContact);
-                    Console.WriteLine("Contact Added Successfully!!");
-
-                }
-                else if (choice == 2)
+                switch (choice)
                 {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\nInvalid choice. Please try again.");
+                    case 1:
+                        Contact.AddContact(contacts);
+                        break;
+                    case 2:
+                        Contact.UpdateContact(contacts);
+                        break;
+                    case 3:
+                        Contact.DisplayContactList(contacts);
+                        break;
+                    case 4:
+                        Console.WriteLine("Exiting...");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice! Please try again.");
+                        break;
                 }
             }
             //Display output
