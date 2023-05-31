@@ -24,6 +24,7 @@ namespace AddressBookSystem
             Contact contact = GetContactDetails();
             contacts.Add(contact);
             Console.WriteLine("Contact added successfully!");
+            Console.WriteLine();
         }
         public static void UpdateContact(List<Contact> contacts)
         {
@@ -45,6 +46,8 @@ namespace AddressBookSystem
                 Contact updatedContact = GetContactDetails();
 
                 // Update the contact properties
+
+                contactToUpdate.FirstName = updatedContact.FirstName;
                 contactToUpdate.LastName = updatedContact.LastName;
                 contactToUpdate.Address = updatedContact.Address;
                 contactToUpdate.City = updatedContact.City;
@@ -58,7 +61,8 @@ namespace AddressBookSystem
             else
             {
                 Console.WriteLine("Contact not found!");
-            }       
+            }
+            Console.WriteLine();
         }
         public static void DisplayContactList(List<Contact> contacts)
         {
@@ -74,6 +78,7 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("No contacts found!");
             }
+            
         }
         private static Contact GetContactDetails()
         {
@@ -112,6 +117,27 @@ namespace AddressBookSystem
             Console.WriteLine($"Address: {contact.Address}, {contact.City}, {contact.State} {contact.Zip}");
             Console.WriteLine($"Phone Number: {contact.PhoneNumber}");
             Console.WriteLine($"Email: {contact.Email}");
+            Console.WriteLine();
+        }
+        public static void DeleteContact(List<Contact> contacts)
+        {
+            Console.WriteLine("\nDelete a contact");
+            Console.Write("Enter the first name of the contact to delete: ");
+            string firstName = Console.ReadLine();
+
+            // Find the contact in the list by first name
+            Contact contactToDelete = contacts.FirstOrDefault(c => c.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase));
+
+            if (contactToDelete != null)
+            {
+                contacts.Remove(contactToDelete);
+                Console.WriteLine("Contact deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Contact not found!");
+            }
+            Console.WriteLine();
         }
     }
 }

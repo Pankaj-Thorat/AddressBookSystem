@@ -19,7 +19,8 @@ namespace AddressBookSystem
                 Console.WriteLine("1. Add a new contact");
                 Console.WriteLine("2. Update a contact");
                 Console.WriteLine("3. Display contacts");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Delete a contact");
+                Console.WriteLine("5. Exit");
 
                 Console.Write("Enter your choice: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -37,6 +38,9 @@ namespace AddressBookSystem
                         Contact.DisplayContactList(contacts);
                         break;
                     case 4:
+                        Contact.DeleteContact(contacts);
+                        break;
+                    case 5:
                         Console.WriteLine("Exiting...");
                         return;
                     default:
