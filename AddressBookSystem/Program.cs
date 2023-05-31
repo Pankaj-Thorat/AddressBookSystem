@@ -11,7 +11,7 @@ namespace AddressBookSystem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Program");
-            List<Contact> contacts = new List<Contact>();
+            AddressBook addressBook = new AddressBook();
 
             while (true)
             {
@@ -29,16 +29,16 @@ namespace AddressBookSystem
                 switch (choice)
                 {
                     case 1:
-                        Contact.AddContact(contacts);
+                        addressBook.AddContact();
                         break;
                     case 2:
-                        Contact.UpdateContact(contacts);
+                        addressBook.UpdateContact();
                         break;
                     case 3:
-                        Contact.DisplayContactList(contacts);
+                        addressBook.DisplayContactList();
                         break;
                     case 4:
-                        Contact.DeleteContact(contacts);
+                        addressBook.DeleteContact();
                         break;
                     case 5:
                         Console.WriteLine("Exiting...");
@@ -48,16 +48,6 @@ namespace AddressBookSystem
                         break;
                 }
             }
-            //Display output
-            Console.WriteLine("\nCONTACT LIST:");
-            foreach (Contact contact in contacts) 
-            {
-                Console.WriteLine($"\nName: {contact.FirstName} {contact.LastName}");
-                Console.WriteLine($"Address: {contact.Address}, {contact.City}, {contact.State} {contact.Zip}");
-                Console.WriteLine($"Phone Number: {contact.PhoneNumber}");
-                Console.WriteLine($"Email: {contact.Email}");
-            }
-            
         }
     }
 }
